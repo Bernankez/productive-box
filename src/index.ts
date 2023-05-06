@@ -89,20 +89,20 @@ interface IRepo {
     ];
 
     return [...prev, line.join(' ')];
-  }, []);
+  }, <string[]>[]);
 
   /**
    * Finally, write into gist
    */
   const octokit = new Octokit({ auth: `token ${process.env.GH_TOKEN}` });
   const gist = await octokit.gists.get({
-    gist_id: process.env.GIST_ID
+    gist_id: process.env.GIST_ID!
   }).catch(error => console.error(`Unable to update gist\n${error}`));
   if (!gist) return;
 
   const filename = Object.keys(gist.data.files)[0];
   await octokit.gists.update({
-    gist_id: process.env.GIST_ID,
+    gist_id: process.env.GIST_ID!,
     files: {
       [filename]: {
         // eslint-disable-next-line quotes
