@@ -105,10 +105,11 @@ interface IRepo {
     gist_id: process.env.GIST_ID!,
     files: {
       [filename]: {
-        // eslint-disable-next-line quotes
-        filename: (morning + daytime) > (evening + night) ? "I'm an early 🐤" : "I'm a night 🦉",
+        filename: '🕙 Commit time distribution',
         content: lines.join('\n'),
       },
     },
+    // eslint-disable-next-line quotes
+    description: (morning + daytime) > (evening + night) ? "I'm an early 🐤" : "I'm a night 🦉"
   });
 })();
